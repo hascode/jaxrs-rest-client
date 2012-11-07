@@ -10,9 +10,8 @@ import com.sun.jersey.api.client.WebResource;
 public class RestClient {
 	public CustomerBean getCustomer() {
 		Client client = new Client();
-
 		WebResource webResource = client
-				.resource("http://localhost/customer.xml");
+				.resource("http://localhost:8080/customer.xml");
 		return webResource.get(CustomerBean.class);
 	}
 
@@ -21,20 +20,15 @@ public class RestClient {
 		};
 
 		Client client = new Client();
-
 		WebResource webResource = client
-				.resource("http://localhost/customers.xml");
+				.resource("http://localhost:8080/customers.xml");
 		return webResource.get(customerType);
 	}
 
-	public Collection<CustomerBean> getAllCustomersByJson() {
-		GenericType<Collection<CustomerBean>> customerType = new GenericType<Collection<CustomerBean>>() {
-		};
-
+	public CustomerBean getCustomerByJson() {
 		Client client = new Client();
-
 		WebResource webResource = client
-				.resource("http://localhost/customers.json");
-		return webResource.get(customerType);
+				.resource("http://localhost:8080/customer.json");
+		return webResource.get(CustomerBean.class);
 	}
 }

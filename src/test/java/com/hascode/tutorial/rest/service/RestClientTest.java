@@ -29,4 +29,15 @@ public class RestClientTest {
 		assertNotNull(customers);
 		assertEquals(3, customers.size());
 	}
+
+	@Test
+	public void testGetAllCustomersAsJson() {
+		RestClient client = new RestClient();
+		CustomerBean customer = client.getCustomerByJson();
+		assertNotNull(customer);
+		assertTrue(123l == customer.getId());
+		assertEquals("I R testuser", customer.getName());
+		assertEquals("test@hascode.com", customer.getEmail());
+		assertEquals("http://www.hascode.com", customer.getWebsite());
+	}
 }
